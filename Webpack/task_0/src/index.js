@@ -1,4 +1,3 @@
-// src/index.js
 import $ from 'jquery';
 
 $(document).ready(function () {
