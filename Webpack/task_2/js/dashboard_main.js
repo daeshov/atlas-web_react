@@ -16,7 +16,7 @@ $(document).ready(function () {
   };
 
   // Debounce click event using Lodash
-  const debouncedUpdateCounter = _.debounce(updateCounter, 1000);
+  const debouncedUpdateCounter = _.debounce(updateCounter, 500);
 
   // Bind click event to button
   $('#startButton').on('click', debouncedUpdateCounter);
