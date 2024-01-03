@@ -21,3 +21,4 @@ $(document).ready(function () {
   // Bind click event to button
   $('#startButton').on('click', debouncedUpdateCounter);
 });
+
