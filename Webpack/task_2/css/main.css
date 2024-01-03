@@ -3,6 +3,7 @@
     width: 200px;
     height: 200px;
     background: url('../assets/holberton-logo.jpg') center/200px 200px no-repeat;
+    background-size: 200px 200px;
   }
   
   #startButton {
@@ -13,4 +14,5 @@
     font-weight: bold;
     display: inline-block;
   }
+
   
