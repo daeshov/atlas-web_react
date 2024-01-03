@@ -1,6 +1,4 @@
-// webpack.config.js
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './js/dashboard_main.js',
@@ -21,9 +19,4 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'main.css',
-    }),
-  ],
 };
