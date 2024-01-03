@@ -5,17 +5,17 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
-    header: './task_3/modules/header/header.js',
-    body: './task_3/modules/body/body.js',
-    footer: './task_3/modules/footer/footer.js',
+    header: './modules/header/header.js',
+    body: './modules/body/body.js',
+    footer: './modules/footer/footer.js',
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'task_3/public'),
+    path: path.resolve(__dirname, 'public'),
   },
   devServer: {
     port: 8564,
-    contentBase: ['./task_3/public'],
+    contentBase: ['./public'],
   },
   module: {
     rules: [
