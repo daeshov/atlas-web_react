@@ -1,5 +1,38 @@
 .Notifications {
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
-  
+  border: 2px dotted red;
+  padding: 12px;
+	position: relative;
+	margin-top: 12px;
+}
+
+li[data-priority="default"] {
+	color: blue;
+}
+
+li[data-priority="urgent"] {
+	color: red;
+}
+
+.Notifications button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.Notifications img {
+  width: 10px;
+  height: 10px;
+}
+
+.Notifications ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.Notifications li {
+  color: blue; /* Default color for priority 'default' */
+}
+
+.Notifications li[data-priority="urgent"] {
+  color: red; /* Color for priority 'urgent' */
+}
