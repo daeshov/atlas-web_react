@@ -7,20 +7,10 @@
   pointer-events: none;
 }
 
-
-.App-header {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: flex-start;
-  border-bottom: 4px solid;
-  color: red;
-}
-
 .App-body {
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   border-bottom: 4px solid red;
 }
