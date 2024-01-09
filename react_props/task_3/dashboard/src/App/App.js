@@ -11,11 +11,7 @@ function App() {
     <Notifications displayDrawer={true} notifications={[]} />
     <div className='App'>
       <Header />
-    </div>
-    <div className='App-body'>
       <Login />
-    </div>
-    <div className='App-footer'>
       <Footer />
     </div>
     </React.Fragment>

@@ -4,7 +4,7 @@ import holberton from '../media/image_mock';
 
 const Header = () => {
   return (
-    <header className="App-header" data-testid="Header">
+    <header className="section-header" data-testid="Header">
         <img src={holberton} className="App-logo" alt="logo" />
         <a
           className="App-link"
