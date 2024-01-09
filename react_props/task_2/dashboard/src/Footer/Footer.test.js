@@ -1,8 +1,7 @@
-// Footer.test.js
 import React from 'react';
-import { shallow } from 'enzyme'; // Assuming you are using enzyme for testing
+import { shallow } from 'enzyme';
 import Footer from './Footer';
-import { getFullYear } from '../utils'; // Adjust the path accordingly
+import { getFullYear } from '../utils';
 
 describe('Footer Component', () => {
   it('should render the text "Copyright"', () => {

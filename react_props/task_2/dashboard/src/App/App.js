@@ -11,7 +11,7 @@ const App = () => {
       <Header />
       <div className="App">
         <Login />
-        <Notifications />
+        <Notifications displayDrawer={true} notifications={[{ id: 1, content: 'New notification' }]} />
       </div>
       <Footer />
     </React.Fragment>
