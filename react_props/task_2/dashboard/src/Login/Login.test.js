@@ -1,16 +1,19 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import Login from './Login';
 
 describe('Login Component', () => {
   it('should render without crashing', () => {
-    const wrapper = shallow(<Login />);
-    expect(wrapper.exists()).toBeTruthy();
+    render(<Login />);
+    expect(screen).toBeTruthy();
   });
 
   it('should render 2 input tags and 2 label tags', () => {
-    const wrapper = shallow(<Login />);
-    expect(wrapper.find('input')).toHaveLength(2);
-    expect(wrapper.find('label')).toHaveLength(2);
+    render(<Login />);
+    const emailInput = screen.getByLabelText(/email/i);
+    const passwordInput = screen.getByLabelText(/password/i);
+
+    expect(emailInput).toBeInTheDocument();
+    expect(passwordInput).toBeInTheDocument();
   });
 });

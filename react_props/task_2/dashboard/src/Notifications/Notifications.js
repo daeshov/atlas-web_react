@@ -1,29 +1,38 @@
 import React from 'react';
 import NotificationItem from './NotificationItem';
-import PropTypes from 'prop-types';
+import './Notifications.css';
+import { getLatestNotification } from "../utils";
+import closeicon from '../assets/close-icon.png';
 
-const Notifications = ({ displayDrawer, notifications }) => {
+const Notifications = () => {
+  const handleButtonClick = () => {
+    console.log("close button has been clicked");
+  };
   return (
     <div className="Notifications">
-      <button onClick={() => console.log('Close button has been clicked')}></button>
+      <button
+        style={{
+          background: "transparent",
+          border: "none",
+          position: "absolute",
+          right: 70,
+        }}
+        aria-label="close"
+        onClick={handleButtonClick}>
+
+        <img src={ closeicon } alt="close-icon"/>
+      </button>
+      <p>Here is the list of notifications</p>
       <ul>
-        {displayDrawer && notifications.length === 0 && <NotificationItem type="default" value="No new notification for now" />}
-        {notifications.map((notification) => (
-          <NotificationItem
-            key={notification.id}
-            type={notification.type}
-            value={notification.value}
-            html={notification.html}
-          />
-        ))}
+        <NotificationItem type="default" value="New course available" />
+        <NotificationItem type="urgent" value="New resume available" />
+        <NotificationItem
+          type="urgent"
+          html={{ __html: getLatestNotification() }}
+        />
       </ul>
     </div>
   );
-};
-
-Notifications.propTypes = {
-  displayDrawer: PropTypes.bool.isRequired,
-  notifications: PropTypes.array.isRequired, // Make sure to provide this prop
 };
 
 export default Notifications;

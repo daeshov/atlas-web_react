@@ -1,8 +1,24 @@
-.App-header {
+.section-header {
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: flex-start;
   border-bottom: 4px solid;
   color: red;
+}
+.section-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	border-bottom: 3px solid var(--holberton-red);
+}
+
+.section-header h1 {
+	margin: auto auto auto 0;
+	color: var(--holberton-red);
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }

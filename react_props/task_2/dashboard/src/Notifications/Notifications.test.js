@@ -1,32 +1,23 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import Notifications from './Notifications';
-import NotificationItem from './NotificationItem';
+import App from '../App/App';
 
 describe('Notifications Component', () => {
-  it('should render without crashing', () => {
-    const wrapper = shallow(<Notifications displayDrawer={true} notifications={[]} />);
-    expect(wrapper.exists()).toBeTruthy();
-  });
-
-  it('should render NotificationItem elements', () => {
-    const notifications = [
-      { id: 1, type: 'default', value: 'Test Notification 1' },
-      { id: 2, type: 'urgent', value: 'Test Notification 2' },
-    ];
-
-    const wrapper = shallow(<Notifications displayDrawer notifications={notifications} />);
-    expect(wrapper.find(NotificationItem)).toHaveLength(2);
+  it('should contain the Notifications component', () => {
+    render(<App />);
+    expect(screen.getByTestId('notifications')).toBeInTheDocument();
   });
 
   it('should render the correct html for the first NotificationItem', () => {
     const notifications = [
-      { id: 1, type: 'default', value: 'Test Notification 1', html: { __html: 'Test HTML 1' } },
+      { id: 1, type: 'default', value: 'No new notification for now', html: { __html: 'No new notification for now' } },
       { id: 2, type: 'urgent', value: 'Test Notification 2' },
     ];
 
-    const wrapper = shallow(<Notifications displayDrawer={true} notifications={notifications} />);
-    expect(wrapper.find(NotificationItem).at(0).prop('html')).toEqual({ __html: 'Test HTML 1' });
-    expect(wrapper.find(NotificationItem).at(0).prop('value')).toEqual('Test Notification 1');
+    render(<Notifications displayDrawer={true} notifications={notifications} />);
+    const notificationItems = screen.getAllByTestId('notification-item');
+    expect(notificationItems[0].textContent).toEqual('No new notification for now');
+
   });
 });

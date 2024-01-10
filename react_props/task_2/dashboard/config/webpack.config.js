@@ -10,12 +10,11 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/,
+                test: /\.css$/i,
                 use: ["style-loader", "css-loader"],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: "asset/resource",
                 use: [
                     "file-loader",
                     {
@@ -41,6 +40,7 @@ module.exports = {
         },
         compress: true,
         hot: true,
+        port: 3000
     },
     devtool: "inline-source-map",
     };

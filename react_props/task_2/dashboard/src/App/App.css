@@ -1,29 +1,17 @@
+:root {
+  --holberton-red: #e1484c;
+}
+
+body {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+div {
+  padding: 2px 8px;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-body {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: flex-start;
-  border-bottom: 4px solid red;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  position: relative;
+  min-height: 100vh;
 }

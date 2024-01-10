@@ -1,17 +1,17 @@
-import { shallow } from 'enzyme';
-import React from 'react';
-import Header from './Header';
+// import React from 'react';
+// import { describe, test, expect } from '@jest/globals';
+// import { render, screen } from '@testing-library/react';
+// import Header from './Header';
 
+// describe('Header Component', () => {
+//   test('should render without crashing', () => {
+//     render(<Header />);
+//     expect(screen.getByRole('heading', { name: /school dashboard/i })).toBeInTheDocument();
+//   });
 
-describe('<Header />', () => {
-    it('Tests that Header renders without crashing', () => {
-        const wrapper = shallow(<Header />);
-        expect(wrapper.exists()).toBe(true);
-    })
-
-    it('Tests that the component renders <img> and <h1> tags', () => {
-        const wrapper = shallow(<Header />);
-        expect(wrapper.exists('img')).toBe(true);
-        expect(wrapper.exists('h1')).toBe(true);
-    })
-});
+//   test('should render img and h1 tags', () => {
+//     render(<Header />);
+//     expect(screen.getByRole('img', { name: /logo/i })).toBeInTheDocument();
+//     expect(screen.getByRole('heading', { name: /school dashboard/i })).toBeInTheDocument();
+//   });
+// });

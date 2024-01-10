@@ -1,11 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import Footer from './Footer';
-import { getFullYear } from '../utils';
 
 describe('Footer Component', () => {
-  it('should render the text "Copyright"', () => {
-    const wrapper = shallow(<Footer />);
-    expect(wrapper.text()).toContain(getFullYear() + ' - Holberton School');
+  it('should render without crashing', () => {
+    render(<Footer />);
+    expect(screen.getByText(/Copyright 2024 - Holberton School/i)).toBeInTheDocument();
   });
 });

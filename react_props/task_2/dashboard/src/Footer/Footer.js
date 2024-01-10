@@ -7,7 +7,7 @@ function Footer(props) {
     const copyright = `Copyright ${getFullYear()} - ${getFooterCopy(true)}`
     console.log(copyright);
     return (
-        <div className="App-footer">
+        <div className="section-footer" data-testid="Footer">
             <p>{copyright}</p>
         </div>
     )

@@ -1,18 +1,12 @@
 import React from 'react';
 import './Header.test';
-import holberton from '../media/image_mock';
+import logo from '../assets/atlas_logo.png';
+import './Header.css'
 
 const Header = () => {
   return (
-    <header className="App-header">
-        <img src={holberton} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        </a>
+    <header className="section-header" data-testid="Header">
+      <img src={ logo } className="App-logo" alt="logo"/>
         <h1>
         School dashboard
         </h1>
