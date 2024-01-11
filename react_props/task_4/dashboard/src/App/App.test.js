@@ -1,16 +1,16 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
 import Notifications from '../Notifications/Notifications';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import CourseList from '../CourseList/CourseList';
 
+
 describe('App Component', () => {
   it('should contain the Notifications component with displayDrawer true', () => {
     render(<Notifications isLoggedIn={false} />);
-    expect(screen.getByTestId('notifications')).toBeInTheDocument();
+    expect(screen.getByTestId('notificationsid')).toBeInTheDocument();
   });
 
   it('should contain the Header component', () => {
@@ -25,12 +25,13 @@ describe('App Component', () => {
 
   it('should not contain the CourseList component when isLoggedIn is false', () => {
     render(<CourseList isLoggedIn={false} />);
-    expect(screen.queryByTestId('course-list-component')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('courselist')).toBeNull();
   });
+  
 
   it('should contain the CourseList component when isLoggedIn is true', () => {
     render(<CourseList isLoggedIn={true} />);
-    expect(screen.getByTestId('course-list-component')).toBeInTheDocument();
+    expect(screen.getByTestId('courselist')).toBeInTheDocument();
   });
 
   it('should not contain the Login component when isLoggedIn is true', () => {

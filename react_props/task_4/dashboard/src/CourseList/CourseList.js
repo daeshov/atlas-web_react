@@ -2,9 +2,13 @@ import React from "react";
 import CourseListRow from "./CourseListRow";
 import "./CourseList.css";
 
+
 const CourseList = () => {
+  if (!isLoggedIn) {
+    return null;
+  }
   return (
-    <table className="course-list">
+    <table className="course-list" data-testid="courselist">
       <thead>
         <CourseListRow textFirstCell="Available courses" isHeader={true} />
         <CourseListRow

@@ -1,28 +1,29 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { render, screen } from "@testing-library/react";
 import CourseList from "./CourseList";
 
 describe("<CourseList />", () => {
-  const wrapper = shallow(<CourseList />);
-  test(" CourseList renders without crashing", () => {
-    expect(wrapper.exists());
+  test("CourseList renders without crashing", () => {
+    render(<CourseList />);
+    const availableCoursesElement = screen.getByText("Available courses");
+    expect(availableCoursesElement).toBeInTheDocument();
   });
+
   test("renders rows", () => {
-    const row = wrapper.find("CourseListRow");
-    expect(row).toHaveLength(5);
-    expect(row.at(0).prop("textFirstCell")).toEqual("Available courses");
-    expect(row.at(0).prop("isHeader")).toEqual(true);
-    expect(row.at(1).prop("textFirstCell")).toEqual("Course name");
-    expect(row.at(1).prop("textSecondCell")).toEqual("Credit");
-    expect(row.at(1).prop("isHeader")).toEqual(true);
-    expect(row.at(2).prop("textFirstCell")).toEqual("ES6");
-    expect(row.at(2).prop("textSecondCell")).toEqual("60");
-    expect(row.at(2).prop("isHeader")).toEqual(false);
-    expect(row.at(3).prop("textFirstCell")).toEqual("Webpack");
-    expect(row.at(3).prop("textSecondCell")).toEqual("20");
-    expect(row.at(3).prop("isHeader")).toEqual(false);
-    expect(row.at(4).prop("textFirstCell")).toEqual("React");
-    expect(row.at(4).prop("textSecondCell")).toEqual("40");
-    expect(row.at(4).prop("isHeader")).toEqual(false);
+    render(<CourseList />);
+
+    // Check the header row
+    const headerRow = screen.getByRole("row", { name: /Course name Credit/i });
+    expect(headerRow).toBeInTheDocument();
+
+    // Check the rows with specific data
+    const rowES6 = screen.getByRole("row", { name: /ES6 60/i });
+    expect(rowES6).toBeInTheDocument();
+
+    const rowWebpack = screen.getByRole("row", { name: /Webpack 20/i });
+    expect(rowWebpack).toBeInTheDocument();
+
+    const rowReact = screen.getByRole("row", { name: /React 40/i });
+    expect(rowReact).toBeInTheDocument();
   });
 });
