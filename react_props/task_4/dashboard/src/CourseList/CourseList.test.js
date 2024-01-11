@@ -1,29 +1,36 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import CourseList from "./CourseList";
 
 describe("<CourseList />", () => {
-  test("CourseList renders without crashing", () => {
+  test("CourseList renders without crashing", async () => {
     render(<CourseList />);
-    const availableCoursesElement = screen.getByText("Available courses");
-    expect(availableCoursesElement).toBeInTheDocument();
+
+    await waitFor(() => {
+      const availableCoursesElement = screen.getByText((content, element) => {
+        return element.tagName.toLowerCase() === "div" && /Available courses/i.test(content);
+      });
+      expect(availableCoursesElement).toBeInTheDocument();
+    });
   });
 
   test("renders rows", () => {
     render(<CourseList />);
 
     // Check the header row
-    const headerRow = screen.getByRole("row", { name: /Course name Credit/i });
+    const headerRow = screen.getByText( "Course name Credit" );
+    console.log("HTML Structure:", screen.debug());
     expect(headerRow).toBeInTheDocument();
 
     // Check the rows with specific data
     const rowES6 = screen.getByRole("row", { name: /ES6 60/i });
-    expect(rowES6).toBeInTheDocument();
-
     const rowWebpack = screen.getByRole("row", { name: /Webpack 20/i });
-    expect(rowWebpack).toBeInTheDocument();
-
     const rowReact = screen.getByRole("row", { name: /React 40/i });
+
+    console.log("HTML Structure:", screen.debug());
+
+    expect(rowES6).toBeInTheDocument();
+    expect(rowWebpack).toBeInTheDocument();
     expect(rowReact).toBeInTheDocument();
   });
 });

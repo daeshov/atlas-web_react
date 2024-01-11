@@ -2,8 +2,7 @@ import React from "react";
 import CourseListRow from "./CourseListRow";
 import "./CourseList.css";
 
-
-const CourseList = () => {
+const CourseList = ({ isLoggedIn }) => {
   if (!isLoggedIn) {
     return null;
   }
