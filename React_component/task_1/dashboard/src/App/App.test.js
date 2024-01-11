@@ -1,31 +1,43 @@
 import React from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
-import { act } from 'react-dom/test-utils';
+import { render, screen } from '@testing-library/react';
 import App from './App';
+import { act } from 'react-dom/test-utils';
 
 // Mocking the alert function
 const mockAlert = jest.spyOn(window, 'alert').mockImplementation(() => {});
 
-describe('<App />', () => {
-  let container = null;
+describe('App Component', () => {
+  // Mock logOut function
+  const logOutMock = jest.fn();
 
-  beforeEach(() => {
-    // Set up a DOM element as a render target
-    container = document.createElement('div');
-    document.body.appendChild(container);
+  it('renders without crashing', () => {
+    render(<App />);
+    expect(screen.getByTestId('app-body')).toBeInTheDocument();
   });
 
-  afterEach(() => {
-    // Clean up on exiting
-    unmountComponentAtNode(container);
-    container.remove();
-    jest.clearAllMocks();
+  it('should contain the Notifications component', () => {
+    render(<App />);
+    expect(screen.getByTestId('notifications')).toBeInTheDocument();
   });
 
-  test('calls logOut and displays alert on ctrl+h key press', () => {
-    const logOutMock = jest.fn();
+  it('should contain the Header component', () => {
+    render(<App />);
+    expect(screen.getByTestId('Header')).toBeInTheDocument();
+  });
+
+  it('should contain the Login component', () => {
+    render(<App />);
+    expect(screen.getByTestId('Login')).toBeInTheDocument();
+  });
+
+  it('should contain the Footer component', () => {
+    render(<App />);
+    expect(screen.getByTestId('Footer')).toBeInTheDocument();
+  });
+
+  it('calls logOut and displays alert on ctrl+h key press', () => {
     act(() => {
-      render(<App logOut={logOutMock} />, container);
+      render(<App logOut={logOutMock} />, { container: document.body });
     });
 
     // Simulate ctrl+h key press
