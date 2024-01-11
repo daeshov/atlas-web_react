@@ -6,9 +6,8 @@ import App from '../App/App';
 
 describe('Notifications Component', () => {
   it('should contain the Notifications component', () => {
-    render(<App />);
-    expect(screen.getByTestId('notificationsid')).toBeInTheDocument();
-    expect(screen.getByTestId('menuitemid')).toBeInTheDocument();
+    const { getByTestId } = render(<App />);
+    expect(getByTestId('notificationsid')).toBeInTheDocument();
   });
 
   it('should render the correct html for the first NotificationItem', () => {

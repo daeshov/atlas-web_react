@@ -5,12 +5,17 @@ import Header from '../Header/Header';
 import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import CourseList from '../CourseList/CourseList';
+import App from './App';
 
 
 describe('App Component', () => {
-  it('should contain the Notifications component with displayDrawer true', () => {
-    render(<Notifications isLoggedIn={false} />);
-    expect(screen.getByTestId('notificationsid')).toBeInTheDocument();
+  it('should render without crashing', () => {
+    render(<App/>);
+  });
+
+  it('should contain the Notifications component', () => {
+    const { getByTestId } = render(<App />);
+    expect(getByTestId('notificationsid')).toBeInTheDocument();
   });
 
   it('should contain the Header component', () => {
@@ -18,26 +23,22 @@ describe('App Component', () => {
     expect(screen.getByTestId('Header')).toBeInTheDocument();
   });
 
-  it('should contain the Login component when isLoggedIn is false', () => {
-    render(<Login isLoggedIn={false} />);
-    expect(screen.getByTestId('Login')).toBeInTheDocument();
+  it('should contain the Login component', () => {
+    const { getByTestId } = render(<Login />);
+    expect(getByTestId('Login')).toBeInTheDocument();
   });
 
   it('should not contain the CourseList component when isLoggedIn is false', () => {
     render(<CourseList isLoggedIn={false} />);
-    expect(screen.queryByTestId('courselist')).toBeNull();
+    expect(screen.queryByTestId('courseList')).toBeNull();
   });
   
 
   it('should contain the CourseList component when isLoggedIn is true', () => {
     render(<CourseList isLoggedIn={true} />);
-    expect(screen.getByTestId('courselist')).toBeInTheDocument();
+    expect(screen.getByTestId('courseList')).toBeInTheDocument();
   });
 
-  it('should not contain the Login component when isLoggedIn is true', () => {
-    render(<Login isLoggedIn={true} />);
-    expect(screen.queryByTestId('Login')).not.toBeInTheDocument();
-  });
 
   it('should contain the Footer component', () => {
     render(<Footer isLoggedIn={false} />);

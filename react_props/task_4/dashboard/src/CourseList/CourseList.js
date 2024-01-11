@@ -7,7 +7,7 @@ const CourseList = ({ isLoggedIn }) => {
     return null;
   }
   return (
-    <table className="course-list" data-testid="courselist">
+    <table className="course-list" data-testid="courseList">
       <thead>
         <CourseListRow textFirstCell="Available courses" isHeader={true} />
         <CourseListRow

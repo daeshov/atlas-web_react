@@ -5,13 +5,13 @@ export default function CourseListRow({isHeader, textFirstCell, textSecondCell})
     if (isHeader) {
         if (textSecondCell === null) {
             return (
-                <tr>
-                    <th colSpan="2">{textFirstCell}</th>
+                <tr data-testid="courselist-header-cell">
+                    <th colSpan="2" data-testid="courselist-row">{textFirstCell}</th>
                 </tr>
             )
         } else {
             return (
-                <tr>
+                <tr data-testid="courselist-row">
                     <th>{textFirstCell}</th>
                     <th>{textSecondCell}</th>
                 </tr>
@@ -19,7 +19,7 @@ export default function CourseListRow({isHeader, textFirstCell, textSecondCell})
         }
     } else {
         return (
-            <tr>
+            <tr data-testid="courselist-row">
                 <td>{textFirstCell}</td>
                 <td>{textSecondCell}</td>
             </tr>
@@ -29,7 +29,7 @@ export default function CourseListRow({isHeader, textFirstCell, textSecondCell})
 
 CourseListRow.propTypes = {
     isHeader: PropTypes.bool,
-    textFirstCell: PropTypes.string.isRequired,
+    textFirstCell: PropTypes.string,
     textSecondCell: PropTypes.string
 }
 

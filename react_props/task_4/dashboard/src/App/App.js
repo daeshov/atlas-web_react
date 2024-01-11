@@ -12,7 +12,7 @@ function App({ isLoggedIn }) {
 
   return (
     <React.Fragment>
-      <Notifications displayDrawer={displayDrawer} notifications={[]} />
+      <Notifications displayDrawer={displayDrawer} data-testid="notificationsid" />
       <div className='App-body'>
         <Header />
         {isLoggedIn ? <CourseList /> : <Login />}

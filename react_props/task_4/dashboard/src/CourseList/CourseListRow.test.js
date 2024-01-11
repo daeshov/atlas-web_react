@@ -2,61 +2,28 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import CourseListRow from './CourseListRow';
 
-describe("Testing the <CourseListRow /> Component", () => {
-  
-    it("renders one cell with colspan = 2 when textSecondCell does not exist", () => {
-        const props = {
-            isHeader: true,
-            textFirstCell: "test",
-            textSecondCell: null
-        }
-        const { container } = render(<CourseListRow shouldRender {...props} />);
-        expect(container.firstChild).toMatchInlineSnapshot(`
-<tr>
-  <th
-    colspan="2"
-  >
-    test
-  </th>
-</tr>
-`);
-    });
+describe('CourseListRow', () => {
+  it('renders one cell with colspan=2 when isHeader is true and textSecondCell does not exist', () => {
+    const { getByTestId } = render(<CourseListRow isHeader={true} textFirstCell='First' />);
+    const headerCell = getByTestId('courselist-header-cell');
     
-    it("renders two cells when textSecondCell is present", () => {
-        const props = {
-            isHeader: true,
-            textFirstCell: "test",
-            textSecondCell: "test2"
-        }
-        const { container } = render(<CourseListRow shouldRender {...props} />);
-        expect(container.firstChild).toMatchInlineSnapshot(`
-            <tr>
-              <th>
-                ${props.textFirstCell}
-              </th>
-              <th>
-                ${props.textSecondCell}
-              </th>
-            </tr>
-        `);
-    });
+    expect(headerCell).toBeInTheDocument();
+    expect(headerCell.colSpan).toBe("2");
+  });
+
+  it('renders two cells when isHeader is true and textSecondCell is present', () => {
+    const { getAllByTestId } = render(<CourseListRow isHeader={true} textFirstCell='First' textSecondCell='Second' />);
+    const headerCells = getAllByTestId('courselist-header-cell');
     
-    it("renders correctly two td elements within a tr element", () => {
-        const props = {
-            isHeader: false,
-            textFirstCell: "test",
-            textSecondCell: "test2"
-        }
-        const { container } = render(<CourseListRow shouldRender {...props} />);
-        expect(container.firstChild).toMatchInlineSnapshot(`
-            <tr>
-              <td>
-                ${props.textFirstCell}
-              </td>
-              <td>
-                ${props.textSecondCell}
-              </td>
-            </tr>
-        `);
-    });
+    expect(headerCells.length).toBe(2);
+  });
+
+  it('renders correctly two td elements within a tr element when isHeader is false', () => {
+    const { getByTestId, getAllByTestId } = render(<CourseListRow isHeader={false} textFirstCell='First' textSecondCell='Second' />);
+    const row = getByTestId('courselist-row');
+    const cells = getAllByTestId('courselist-cell');
+    
+    expect(row).toBeInTheDocument();
+    expect(cells.length).toBe(2);
+  });
 });
