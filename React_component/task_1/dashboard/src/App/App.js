@@ -11,8 +11,23 @@ class App extends Component {
     this.state = {
       isLoggedIn: props.isLoggedIn || false,
     };
-    this.logOut = props.logOut;
+    this.logOut = props.logOut || (() => {}); // Added default value for logOut
   }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyDown);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyDown);
+  }
+
+  handleKeyDown = (event) => {
+    if (event.ctrlKey && event.key === 'h') {
+      alert('Logging you out');
+      this.logOut();
+    }
+  };
 
   render() {
     return (
