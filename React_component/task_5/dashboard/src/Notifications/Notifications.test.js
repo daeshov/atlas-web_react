@@ -11,13 +11,10 @@ describe('Notifications Component', () => {
 
     const { rerender } = render(<Notifications displayDrawer={true} notifications={notifications} />);
     
-    // Save the current instance of the component
     const initialComponentInstance = screen.getByClassName('Notifications');
 
-    // Rerender with the same list of notifications
     rerender(<Notifications displayDrawer={true} notifications={notifications} />);
     
-    // Check if the component instance is the same (no rerender)
     expect(screen.getByClassName('Notifications')).toBe(initialComponentInstance);
   });
 
@@ -33,13 +30,10 @@ describe('Notifications Component', () => {
 
     const { rerender } = render(<Notifications displayDrawer={true} notifications={initialNotifications} />);
     
-    // Save the current instance of the component
     const initialComponentInstance = screen.getByClassName('Notifications');
 
-    // Rerender with a longer list of notifications
     rerender(<Notifications displayDrawer={true} notifications={longerNotifications} />);
     
-    // Check if the component instance is different (rerendered)
     expect(screen.getByClassName('Notifications')).not.toBe(initialComponentInstance);
   });
 });
