@@ -4,7 +4,7 @@ import "./BodySection.css";
 
 const BodySectionWithMarginBottom = (props) => {
   return (
-    <div className="bodySectionWithMargin">
+    <div className="bodySectionWithMargin" data-testid="bodySectionWithMargin">
       <BodySection {...props} />
     </div>
   );

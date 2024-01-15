@@ -1,46 +1,32 @@
 import React from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
-import WithLogging from './WithLogging';
+import { render, screen } from '@testing-library/react';
+import WithLogging from './WithLogging.js';
+import Login from '../Login/Login.js';
 
-console.log = jest.fn();
+let log = jest.spyOn(console, 'log');
 
-describe('WithLogging HOC', () => {
-  let container = null;
-
+describe("Testing the <WithLogging /> Component", () => {
   beforeEach(() => {
-    container = document.createElement('div');
-    document.body.appendChild(container);
+    log.mockClear();
   });
 
-  afterEach(() => {
-    unmountComponentAtNode(container);
-    container.remove();
+  it("Renders the correct children with pure HTML as a child", () => {
+    render(
+      <WithLogging>
+        <p>simple phrase</p>
+      </WithLogging>
+    );
+    expect(log).toHaveBeenCalledWith('Component Component is mounted');
+    expect(log).not.toHaveBeenCalledWith('Component Component is going to unmount');
   });
 
-  it('should log mount and unmount messages with "Component" for pure HTML', () => {
-    const WrappedComponent = WithLogging(() => <p />);
-    render(<WrappedComponent />, container);
-
-    expect(console.log).toHaveBeenCalledWith('Component is mounted on componentDidMount()');
-
-    unmountComponentAtNode(container);
-
-    expect(console.log).toHaveBeenCalledWith('Component is going to unmount on componentWillUnmount()');
+  it("Renders the correct children with <Login /> Component as a child", () => {
+    render(
+      <WithLogging>
+        <Login />
+      </WithLogging>
+    );
+    expect(log).toHaveBeenCalledWith('Component Login is mounted');
+    expect(log).not.toHaveBeenCalledWith('Component Login is going to unmount');
   });
-
-  it('should log mount and unmount messages with the name of the component for Login component', () => {
-    const Login = () => <div>Login component</div>;
-    const WrappedLogin = WithLogging(Login);
-    render(<WrappedLogin />, container);
-
-    expect(console.log).toHaveBeenCalledWith('Component Login is mounted on componentDidMount()');
-
-    unmountComponentAtNode(container);
-
-    expect(console.log).toHaveBeenCalledWith('Component Login is going to unmount on componentWillUnmount()');
-  });
-});
-
-afterAll(() => {
-  jest.restoreAllMocks();
 });

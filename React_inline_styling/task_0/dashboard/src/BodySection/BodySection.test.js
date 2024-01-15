@@ -10,7 +10,8 @@ describe("TEST SUIT", () => {
       </BodySection>
     );
 
-    expect(screen.find("h2").text()).toEqual("test title");
-    expect(screen.find("p").text()).toEqual("test children node");
+    expect(screen.getByTestId("BodySection")).toBeInTheDocument();
+    expect(screen.getByTestId("BodySection").querySelector("h2").textContent).toEqual("test title");
+    expect(screen.getByTestId("BodySection").querySelector("p").textContent).toEqual("test children node");
   });
 });

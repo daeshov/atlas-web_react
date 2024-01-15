@@ -36,10 +36,52 @@ class App extends React.Component {
   }
 
   render() {
+    let {
+      isLoggedIn,
+    } = this.props;
+
+    let i = 0;
+    
+    let listNotifications = [
+      {
+        id: i++,
+        type: "default",
+        value: "New course available",
+      },
+      {
+        id: i++,
+        type: "urgent",
+        value: "New resume available",
+      },
+      {
+        id: i++,
+        type: "urgent",
+        html: {__html: getLatestNotification()},
+      }
+    ];
+
+    let listCourses = [
+      {
+        id: 1,
+        name: "ES6",
+        credit: 60,
+      },
+      {
+        id: 2,
+        name: "Webpack",
+        credit: 20,
+      },
+      {
+        id: 3,
+        name: "React",
+        credit: 40,
+      },
+    ];
+
     return (
       <React.Fragment>
-        <Notifications listNotifications={listNotifications} />
-        <div className="App">
+        <Notifications listNotifications={listNotifications} data-testid="menuItem"/>
+        <div className="App" data-testid="app-body">
           <Header />
           {this.state.isLoggedIn ? (
             <BodySectionWithMarginBottom title="Course list">

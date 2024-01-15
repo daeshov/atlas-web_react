@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NotificationItem from './NotificationItem';
 import './Notifications.css';
-import { getLatestNotification } from '../utils';
+import { getLatestNotification } from '../utils/utils';
 import closeicon from '../assets/close-icon.png';
 import PropTypes from 'prop-types';
 
@@ -30,10 +30,10 @@ class Notifications extends Component {
     const { displayDrawer } = this.state;
 
     return (
-      <div className="menuItem">
+      <div className="menuItem" data-testid="menuItem" >
         <p>Your notifications</p>
         {displayDrawer && (
-          <div className="Notifications">
+          <div className="Notifications" data-testid="Notifications" >
             <button
               style={{
                 background: 'transparent',

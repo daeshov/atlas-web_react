@@ -4,7 +4,7 @@ import NotificationItem from './NotificationItem';
 
 describe('NotificationItem Component', () => {
   it('should render without crashing', () => {
-    render(<NotificationItem type="default" value="test" />);
+    render(<NotificationItem type="data-notification-type" value="test" />);
     expect(screen.getByTestId('notification-item')).toBeInTheDocument();
   });
 
@@ -25,7 +25,7 @@ describe('NotificationItem Component', () => {
     const spyMarkAsRead = jest.fn();
     const id = 1;
 
-    render(<NotificationItem id={id} type="default" value="test" markAsRead={spyMarkAsRead} />);
+    render(<NotificationItem id={id} type="data-notification-type" value="test" markAsRead={spyMarkAsRead} />);
     fireEvent.click(screen.getByTestId('notification-item'));
 
     expect(spyMarkAsRead).toHaveBeenCalledWith(id);
