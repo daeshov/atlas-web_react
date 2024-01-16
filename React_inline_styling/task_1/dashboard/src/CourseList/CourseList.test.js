@@ -2,6 +2,9 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import CourseList from "./CourseList";
 import CourseListRow from "./CourseListRow";
+import { StyleSheetTestUtils } from 'aphrodite';
+
+StyleSheetTestUtils.suppressStyleInjection();
 
 describe("<CourseList />", () => {
   it('should contain the CourseList component when isLoggedIn is true', () => {
