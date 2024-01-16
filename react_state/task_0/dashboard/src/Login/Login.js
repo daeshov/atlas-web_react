@@ -4,7 +4,7 @@ import { StyleSheet, css } from 'aphrodite';
 const Login = () => {
   return (
     <React.Fragment>
-      <div className={css(styles.loginBody)} data-testid="login">
+      <div className={css(styles.loginBody)} data-testid="Login">
       <label htmlFor="email"> Email:</label>
         <input type="text" id="email" />
 

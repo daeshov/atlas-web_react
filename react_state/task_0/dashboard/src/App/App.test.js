@@ -1,17 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import { act } from 'react-dom/test-utils';
 import Login from '../Login/Login';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
-import Notifications from '../Notifications/Notifications';
 
 jest.mock('aphrodite');
-
-// Mocking the alert function
-const mockAlert = jest.spyOn(window, 'alert').mockImplementation(() => {});
-
 
 describe("<App />", () => {
   
@@ -21,22 +13,22 @@ describe("<App />", () => {
   });
 
   it('should contain the Notifications component', () => {
-    render(<Notifications />);
+    render(<App />);
     expect(screen.getByTestId('menuItem')).toBeInTheDocument();
   });
 
   it('should contain the Header component', () => {
-    render(<Header />);
+    render(<App />);
     expect(screen.getByTestId('Header')).toBeInTheDocument();
   });
 
   it('should contain the Login component', () => {
     render(<Login />);
-    expect(screen.getByTestId('login')).toBeInTheDocument();
+    expect(screen.getByTestId('Login')).toBeInTheDocument();
   });
 
   it('should contain the Footer component', () => {
-    render(<Footer />);
+    render(<App />);
     expect(screen.getByTestId('Footer')).toBeInTheDocument();
   });
  

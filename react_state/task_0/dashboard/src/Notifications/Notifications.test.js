@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Notifications from './Notifications';
 
 jest.mock('aphrodite');
@@ -23,5 +23,22 @@ describe('Notifications Component', () => {
     
     expect(screen.getByTestId('menuItem')).toBe(initialComponentInstance);
   });
-  
+
+  it('should call handleDisplayDrawer when clicking on the menu item', () => {
+    const handleDisplayDrawerMock = jest.fn();
+    render(<Notifications displayDrawer={false} handleDisplayDrawer={handleDisplayDrawerMock} />);
+    
+    fireEvent.click(screen.getByTestId('menuItem'));
+
+    expect(handleDisplayDrawerMock).toHaveBeenCalled();
+  });
+
+  it('should call handleHideDrawer when clicking on the button', () => {
+    const handleHideDrawerMock = jest.fn();
+    render(<Notifications displayDrawer={true} handleHideDrawer={handleHideDrawerMock} />);
+    
+    fireEvent.click(screen.getByLabelText('close'));
+
+    expect(handleHideDrawerMock).toHaveBeenCalled();
+  });
 });

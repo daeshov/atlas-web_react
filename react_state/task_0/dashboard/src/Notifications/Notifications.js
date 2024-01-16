@@ -22,6 +22,20 @@ class Notifications extends Component {
     console.log(`Notification ${id} has been marked as read`);
   }
 
+  handleYourNotificationsClick = () => {
+    const { handleDisplayDrawer } = this.props;
+    if (handleDisplayDrawer) {
+      handleDisplayDrawer();
+    }
+  };
+
+  handleHideButtonClick = () => {
+    const { handleHideDrawer } = this.props;
+    if (handleHideDrawer) {
+      handleHideDrawer();
+    }
+  };
+
   render() {
     const { displayDrawer, listNotifications } = this.props;
 
@@ -31,7 +45,11 @@ class Notifications extends Component {
 
     return (
       <>
-        <div className={css(styles.menuItem)} data-testid="menuItem">
+        <div
+          className={css(styles.menuItem)}
+          data-testid="menuItem"
+          onClick={this.handleYourNotificationsClick}
+        >
           <p className={menuPStyle}>Your notifications</p>
         </div>
         {displayDrawer && (
@@ -44,6 +62,7 @@ class Notifications extends Component {
                 right: 20,
               }}
               aria-label="close"
+              onClick={this.handleHideButtonClick}
             >
               <img
                 src={closeIcon}
@@ -80,11 +99,15 @@ class Notifications extends Component {
 Notifications.defaultProps = {
   displayDrawer: false,
   listNotifications: [],
+  handleDisplayDrawer: null,
+  handleHideDrawer: null,
 };
 
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
+  handleDisplayDrawer: PropTypes.func,
+  handleHideDrawer: PropTypes.func,
 };
 
 const screenSize = {
@@ -96,16 +119,11 @@ const fadeIn = {
   '100%': { opacity: 1 },
 };
 
-const menuPStyle = css(
-  displayDrawer ? styles.menuItemPNoShow : styles.menuItemPShow
-);
-
 const bounce = {
   '0%, 100%': { transform: 'translateY(0)' },
   '50%': { transform: 'translateY(-5px)' },
   '75%': { transform: 'translateY(5px)' },
 };
-
 
 const styles = StyleSheet.create({
   menuItem: {
@@ -116,6 +134,7 @@ const styles = StyleSheet.create({
       cursor: 'pointer',
       animation: `${fadeIn} 1s, ${bounce} 0.5s 3`,
     },
+  },
 
   menuItemPNoShow: {
     marginRight: "8px",
@@ -128,7 +147,7 @@ const styles = StyleSheet.create({
     marginRight: "8px",
   },
 
-  Notifications: {
+  notifications: {
     float: "right",
     border: `3px solid red`,
     padding: "10px",
@@ -146,11 +165,11 @@ const styles = StyleSheet.create({
     },
   },
 
-  NotificationsButtonImg: {
+  notificationsButtonImage: {
     width: "10px",
   },
 
-  NotificationsP: {
+  notificationsP: {
     marginTop: '15px',
     margin: 0,
   },
@@ -160,7 +179,6 @@ const styles = StyleSheet.create({
       padding: 0,
     },
   },
-}
 });
 
 export default Notifications;

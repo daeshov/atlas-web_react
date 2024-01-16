@@ -15,8 +15,11 @@ class App extends React.Component {
     super(props);
     this.state = {
       isLoggedIn: props.isLoggedIn || false,
+      displayDrawer: false,
     };
     this.logOut = props.logOut;
+    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
+    this.handleHideDrawer = this.handleHideDrawer.bind(this);
   }
 
   handleKeyDown(e) {
@@ -25,6 +28,13 @@ class App extends React.Component {
       alert('Logging you out');
       this.logOut();
     }
+  }
+  handleDisplayDrawer() {
+    this.setState({ displayDrawer: true });
+  }
+
+  handleHideDrawer() {
+    this.setState({ displayDrawer: false });
   }
 
   componentDidMount() {
@@ -36,9 +46,7 @@ class App extends React.Component {
   }
 
   render() {
-    let {
-      isLoggedIn,
-    } = this.props;
+    const { isLoggedIn, displayDrawer } = this.state;
 
     let i = 0;
     
@@ -115,18 +123,14 @@ App.defaultProps = {
 
 const styles = StyleSheet.create({
   body: {
-    // Add your body styling here
     backgroundColor: '#f0f0f0',
     fontFamily: 'Arial, sans-serif',
-    // Add more styles as needed
   },
   footer: {
-    // Add your footer styling here
     backgroundColor: '#333',
     color: '#fff',
     padding: '10px',
     textAlign: 'center',
-    // Add more styles as needed
   },
 });
 
