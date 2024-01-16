@@ -1,5 +1,4 @@
 import React from 'react';
-import './Header.test';
 import logo from '../assets/atlas_logo.png';
 import './Header.css'
 
