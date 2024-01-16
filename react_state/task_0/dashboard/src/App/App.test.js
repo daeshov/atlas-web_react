@@ -32,4 +32,20 @@ describe("<App />", () => {
     expect(screen.getByTestId('Footer')).toBeInTheDocument();
   });
  
+  it('tests the drawer display', () => {
+    render(<App />);
+    const instance = screen.getByTestId('app-body').instance;
+
+    // Verify that handleDisplayDrawer is called
+    act(() => {
+      instance.handleDisplayDrawer();
+    });
+    expect(instance.state.displayDrawer).toBe(true);
+
+    // Verify that handleHideDrawer is called
+    act(() => {
+      instance.handleHideDrawer();
+    });
+    expect(instance.state.displayDrawer).toBe(false);
+  });
 });
