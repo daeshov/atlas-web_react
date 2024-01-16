@@ -88,7 +88,11 @@ class App extends React.Component {
 
     return (
       <React.Fragment>
-        <Notifications listNotifications={listNotifications} data-testid="menuItem"/>
+        <Notifications listNotifications={listNotifications}
+          displayDrawer={this.state.displayDrawer}
+          handleDisplayDrawer={this.handleDisplayDrawer}
+          handleHideDrawer={this.handleHideDrawer}
+          data-testid="menuItem"/>
         <div className="App" data-testid="app-body">
           <Header />
           {!isLoggedIn ? (
