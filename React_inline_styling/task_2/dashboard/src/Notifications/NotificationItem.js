@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
+import { StyleSheet, css } from 'aphrodite';
+
 
 class NotificationItem extends PureComponent {
   handleClick = () => {
