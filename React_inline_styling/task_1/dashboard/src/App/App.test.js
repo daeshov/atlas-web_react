@@ -10,9 +10,14 @@ import Notifications from '../Notifications/Notifications';
 // Mocking the alert function
 const mockAlert = jest.spyOn(window, 'alert').mockImplementation(() => {});
 
-describe('App Component', () => {
-  // Mock logOut function
-  const logOutMock = jest.fn();
+describe("<App />", () => {
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
+  afterAll(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+  });
+
 
   it('renders without crashing', () => {
     render(<App />);
