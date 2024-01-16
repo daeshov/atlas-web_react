@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { PureComponent } from 'react';
 
 class NotificationItem extends PureComponent {
   handleClick = () => {
@@ -32,5 +33,14 @@ NotificationItem.propTypes = {
 NotificationItem.defaultProps = {
   html: null,
 };
+
+const styles = StyleSheet.create({
+  default: {
+    color: 'blue'
+  },
+  urgent: {
+    color: 'red'
+  }
+});
 
 export default NotificationItem;

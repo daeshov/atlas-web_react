@@ -1,6 +1,8 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import NotificationItem from './NotificationItem';
+import { StyleSheetTestUtils } from "aphrodite";
+
 
 describe('NotificationItem Component', () => {
   it('should render without crashing', () => {
@@ -29,5 +31,15 @@ describe('NotificationItem Component', () => {
     fireEvent.click(screen.getByTestId('notification-item'));
 
     expect(spyMarkAsRead).toHaveBeenCalledWith(id);
+  });
+});
+
+describe('NotificationItem', () => {
+  beforeEach(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
+
+  afterEach(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
   });
 });

@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import CourseListRow from "./CourseListRow";
+import { StyleSheetTestUtils } from "aphrodite";
 
 describe("<CourseListRow />", () => {
   it("renders without crashing", () => {
@@ -55,5 +56,15 @@ describe("<CourseListRow />", () => {
     const row = container.querySelector("tr");
     expect(row).toBeInTheDocument();
     expect(row.children).toHaveLength(2);
+  });
+});
+
+describe('CourseListRow', () => {
+  beforeEach(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  });
+
+  afterEach(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
   });
 });

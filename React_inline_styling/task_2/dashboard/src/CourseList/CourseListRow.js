@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import { StyleSheet, css } from 'aphrodite';
 
 const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
   let element;
@@ -43,5 +44,15 @@ CourseListRow.propTypes = {
   textFirstCell: PropTypes.string.isRequired,
   textSecondCell: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
+
+const styles = StyleSheet.create({
+  cell: {
+    padding: '0.25rem',
+    border: '1px solid black'
+  },
+  'align-left': {
+    textAlign: 'left'
+  }
+});
 
 export default CourseListRow;
