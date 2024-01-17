@@ -12,6 +12,13 @@ class Notifications extends Component {
     this.markAsRead = this.markAsRead.bind(this);
   }
 
+  handleDisplayDrawer = () => {
+    const { handleDisplayDrawer } = this.props;
+    if (handleDisplayDrawer) {
+      handleDisplayDrawer();
+    }
+  };
+  
   shouldComponentUpdate(nextProps) {
     return (
       nextProps.listNotifications.length > this.props.listNotifications.length

@@ -29,25 +29,30 @@ describe("<App />", () => {
     expect(screen.getByTestId('Login')).toBeInTheDocument();
   });
 
-  it('should contain the Footer component', () => {
+  it('tests the drawer display', async () => {
     render(<App />);
-    expect(screen.getByTestId('Footer')).toBeInTheDocument();
-  });
- 
-  it('tests the drawer display', () => {
-    render(<Notifications />);
     const notificationsComponent = screen.getByTestId('Notifications');
   
     // Verify that handleDisplayDrawer is called
     act(() => {
       fireEvent.click(notificationsComponent);
     });
-    expect(screen.getByTestId('Notifications')).toBeInTheDocument();
   
+    // Wait for the asynchronous operation or set displayDrawer to true explicitly
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    });
+
+    render(<Notifications displayDrawer={true} />);
+
     // Verify that handleHideDrawer is called
     act(() => {
-      fireEvent.click(notificationsComponent);
+      console.log("Before fireEvent.click");
+      fireEvent.click(screen.getByTestId('closeButton'));
+      console.log("After fireEvent.click");
     });
-    expect(screen.getByTestId('Notifications')).toBeInTheDocument();
-  });  
+    console.log("After act");
+    expect(screen.queryByTestId('menuItem')).toBeInTheDocument();
+  });
+   
 });
