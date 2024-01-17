@@ -80,7 +80,6 @@ class Notifications extends Component {
             >
               <img
                 src={closeIcon}
-                alt="close-icon"
                 className={css(styles.notificationsButtonImage)}
               />
             </button>
