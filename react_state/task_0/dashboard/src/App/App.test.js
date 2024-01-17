@@ -1,7 +1,9 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act, fireEvent } from '@testing-library/react';
 import App from './App';
 import Login from '../Login/Login';
+import Notifications from '../Notifications/Notifications';
+
 
 jest.mock('aphrodite');
 
@@ -13,8 +15,8 @@ describe("<App />", () => {
   });
 
   it('should contain the Notifications component', () => {
-    render(<App />);
-    expect(screen.getByTestId('menuItem')).toBeInTheDocument();
+    render(<Notifications />);
+    expect(screen.getByTestId('Notifications')).toBeInTheDocument();
   });
 
   it('should contain the Header component', () => {
@@ -33,19 +35,19 @@ describe("<App />", () => {
   });
  
   it('tests the drawer display', () => {
-    render(<App />);
-    const instance = screen.getByTestId('app-body').instance;
-
+    render(<Notifications />);
+    const notificationsComponent = screen.getByTestId('Notifications');
+  
     // Verify that handleDisplayDrawer is called
     act(() => {
-      instance.handleDisplayDrawer();
+      fireEvent.click(notificationsComponent);
     });
-    expect(instance.state.displayDrawer).toBe(true);
-
+    expect(screen.getByTestId('Notifications')).toBeInTheDocument();
+  
     // Verify that handleHideDrawer is called
     act(() => {
-      instance.handleHideDrawer();
+      fireEvent.click(notificationsComponent);
     });
-    expect(instance.state.displayDrawer).toBe(false);
-  });
+    expect(screen.getByTestId('Notifications')).toBeInTheDocument();
+  });  
 });

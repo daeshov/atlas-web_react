@@ -36,6 +36,11 @@ class Notifications extends Component {
     }
   };
 
+  exposeFunctions = () => ({
+    handleDisplayDrawer: this.handleYourNotificationsClick,
+    handleHideDrawer: this.handleHideButtonClick,
+  });
+
   render() {
     const { displayDrawer, listNotifications } = this.props;
 
@@ -46,14 +51,14 @@ class Notifications extends Component {
     return (
       <>
         <div
-          className={css(styles.menuItem)}
-          data-testid="menuItem"
+          className={css(styles.Notifications)}
+          data-testid="Notifications"
           onClick={this.handleYourNotificationsClick}
         >
           <p className={menuPStyle}>Your notifications</p>
         </div>
         {displayDrawer && (
-          <div className={css(styles.notifications)} data-testid="Notifications">
+          <div className={css(styles.menuItem)} data-testid="menuItem">
             <button
               style={{
                 background: "transparent",
@@ -63,6 +68,7 @@ class Notifications extends Component {
               }}
               aria-label="close"
               onClick={this.handleHideButtonClick}
+              data-testid="closeButton"
             >
               <img
                 src={closeIcon}

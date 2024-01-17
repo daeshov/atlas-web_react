@@ -46,7 +46,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { isLoggedIn, displayDrawer } = this.state;
+    const { isLoggedIn, logOut } = this.props;
+    const { displayDrawer } = this.state;
 
     let i = 0;
     
@@ -92,7 +93,7 @@ class App extends React.Component {
           displayDrawer={this.state.displayDrawer}
           handleDisplayDrawer={this.handleDisplayDrawer}
           handleHideDrawer={this.handleHideDrawer}
-          data-testid="menuItem"/>
+          data-testid="Notifications"/>
         <div className="App" data-testid="app-body">
           <Header />
           {!isLoggedIn ? (

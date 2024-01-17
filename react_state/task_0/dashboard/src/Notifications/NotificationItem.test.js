@@ -6,7 +6,7 @@ jest.mock('aphrodite');
 
 describe('NotificationItem Component', () => {
   it('should render without crashing', () => {
-    render(<NotificationItem type="data-notification-type" value="test" />);
+    render(<NotificationItem id={1} type="data-notification-type" value="test" />);
     expect(screen.getByTestId('notification-item')).toBeInTheDocument();
   });
 

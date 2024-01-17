@@ -28,7 +28,7 @@ describe('Notifications Component', () => {
     const handleDisplayDrawerMock = jest.fn();
     render(<Notifications displayDrawer={false} handleDisplayDrawer={handleDisplayDrawerMock} />);
     
-    fireEvent.click(screen.getByTestId('menuItem'));
+    fireEvent.click(screen.getByTestId('Notifications'));
 
     expect(handleDisplayDrawerMock).toHaveBeenCalled();
   });
