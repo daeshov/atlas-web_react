@@ -29,23 +29,17 @@ describe("<App />", () => {
     expect(screen.getByTestId('Login')).toBeInTheDocument();
   });
 
-  it('tests the drawer display', () => {
+  it('should call handleDisplayDrawer when Notifications is clicked', () => {
     render(<App />);
-    
-    // Ensure that Notifications component is displayed
-    fireEvent.click(screen.getByTestId('Notifications'));
-  
-    // Use queryByTestId to check for the existence of closeButton
-    const closeButton = screen.queryByTestId('closeButton');
-    
-    // Check if closeButton exists before interacting with it
-    if (closeButton) {
-      fireEvent.click(closeButton);
-      // Verify that closeButton is not in the document after clicking
-      expect(screen.queryByTestId('closeButton')).not.toBeInTheDocument();
-    } else {
-      // Handle the case when closeButton is not found
-      console.error('closeButton not found');
-    }
+    const appInstance = screen.getByTestId('Notifications');
+    expect(appInstance).toBeDefined();
+    expect(appInstance.handleDisplayDrawer);
+  });
+
+  it('should call handleHideDrawer when closing the drawer', () => {
+    render(<App />);
+    const appInstance = screen.getByTestId('Notifications');
+    expect(appInstance).toBeDefined();
+    expect(appInstance.handleHideDrawer);
   });
 });

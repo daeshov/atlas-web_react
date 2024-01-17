@@ -29,11 +29,11 @@ class App extends React.Component {
       this.logOut();
     }
   }
-  handleDisplayDrawer() {
+  handleDisplayDrawer = () => {
     this.setState({ displayDrawer: true });
   }
 
-  handleHideDrawer() {
+  handleHideDrawer = () => {
     this.setState({ displayDrawer: false });
   }
 
