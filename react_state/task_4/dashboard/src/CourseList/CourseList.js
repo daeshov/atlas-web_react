@@ -19,15 +19,16 @@ class CourseList extends Component {
 		} else {
 			return (
 				<table id="CourseList" data-testid="courseList" className={css(styles.table)}>
-					<thead className={css(styles.cell)}>
-						<CourseListRow textFirstCell="Available courses" isHeader={true} />
-						<CourseListRow textFirstCell="Course name" textSecondCell="Credit" />
+					<thead className={css(styles.cell)} data-testid="courselist-row">
+						<CourseListRow data-testid="courselist-row" textFirstCell="Available courses" isHeader={true} />
+						<CourseListRow data-testid="courselist-row" textFirstCell="Course name" textSecondCell="Credit" />
 					</thead>
 					<tbody>
 						{
 							listCourses.map(course => {
 								return (
 									<CourseListRow
+										data-testid="courselist-row"
 										key={course.id}
 										textFirstCell={course.name}
 										textSecondCell={course.credit}

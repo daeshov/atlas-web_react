@@ -20,8 +20,8 @@ class CourseList extends Component {
 			return (
 				<table id="CourseList" data-testid="courseList" className={css(styles.table)}>
 					<thead className={css(styles.cell)}>
-						<CourseListRow textFirstCell="Available courses" isHeader={true} />
-						<CourseListRow textFirstCell="Course name" textSecondCell="Credit" />
+						<CourseListRow data-testid="courselist-row" textFirstCell="Available courses" isHeader={true} />
+						<CourseListRow data-testid="courselist-row" textFirstCell="Course name" textSecondCell="Credit" />
 					</thead>
 					<tbody>
 						{

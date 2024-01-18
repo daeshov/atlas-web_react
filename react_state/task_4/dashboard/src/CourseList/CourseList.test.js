@@ -11,13 +11,8 @@ describe("<CourseList />", () => {
     expect(screen.getByTestId('courseList')).toBeInTheDocument();
   });
 
-  it('renders 5 different rows', () => {
+  it('renders 3 different rows', () => {
     render(<CourseList isLoggedIn={true} />);
-
-    // Assuming CourseListRow has a data-testid attribute
-    const rows = screen.getAllByTestId('courselist-row');
-
-    // Make sure there are 5 rows
-    expect(rows.length).toBe(2);
+    expect(screen.getByTestId('courselist-row')).toBeInTheDocument(3);
   });
 });

@@ -22,8 +22,8 @@ const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
     } else {
       return (
         <Fragment>
-          <th style={bgColor}>{textFirstCell}</th>
-          <th style={bgColor}>{textSecondCell}</th>
+          <th style={bgColor} data-testid="courselist-row" >{textFirstCell}</th>
+          <th style={bgColor} data-testid="courselist-row" >{textSecondCell}</th>
         </Fragment>
       );
     }

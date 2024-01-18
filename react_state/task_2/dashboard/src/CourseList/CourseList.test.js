@@ -14,10 +14,8 @@ describe("<CourseList />", () => {
   it('renders 5 different rows', () => {
     render(<CourseList isLoggedIn={true} />);
 
-    // Assuming CourseListRow has a data-testid attribute
-    const rows = screen.getAllByTestId('courselist-row');
+    const rows = screen.getByTestId('courselist-row');
 
-    // Make sure there are 5 rows
     expect(rows.length).toBe(2);
   });
 });

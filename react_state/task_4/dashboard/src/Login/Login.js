@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 const Login = ({ logIn }) => {
-  // Remove the isLoggedIn property from the state
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // Modify handleLoginSubmit to call logIn function
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     logIn(email, password);

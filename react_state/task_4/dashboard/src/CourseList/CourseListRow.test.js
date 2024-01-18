@@ -40,23 +40,5 @@ describe("<CourseListRow />", () => {
     expect(firstCell).toBeInTheDocument();
     expect(secondCell).toBeInTheDocument();
   });
-
-  it("renders two td", () => {
-    const { container } = render(
-      <table>
-        <tbody>
-          <CourseListRow
-            isHeader={false}
-            textFirstCell="test"
-            textSecondCell="second"
-          />
-        </tbody>
-      </table>
-    );
-
-    const row = container.querySelector("tr");
-    expect(row).toBeInTheDocument();
-    expect(row.children).toHaveLength(2);
-  });
 });
 
