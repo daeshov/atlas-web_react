@@ -4,7 +4,6 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 import thunk from 'redux-thunk';
-import 'jest-canvas-mock';
 
 
 // setupTests.js

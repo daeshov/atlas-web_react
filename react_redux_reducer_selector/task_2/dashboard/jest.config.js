@@ -8,7 +8,7 @@ module.exports = {
   ],
   testMatch: ["<rootDir>/src/**/*.test.js"],
   verbose: true,
-  testEnvironment: "node",
+  testEnvironment: "jsdom",
   moduleNameMapper: {
     "\\.(css|sass)$": "<rootDir>/__mocks__/styleMock.js",
     "\\.(jpg|jpeg|png|gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js",

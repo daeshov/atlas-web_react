@@ -6,6 +6,7 @@ import '@testing-library/jest-dom';
 import thunk from 'redux-thunk';
 
 
+
 // setupTests.js
 jest.mock('aphrodite', () => ({
     StyleSheet: {
