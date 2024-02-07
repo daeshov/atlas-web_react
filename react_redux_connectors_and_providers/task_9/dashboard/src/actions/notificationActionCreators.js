@@ -26,3 +26,17 @@ export const fetchCourses = () => async (dispatch) => {
     dispatch(setLoadingState(false));
   }
 };
+
+export function fetchNotifications() {
+  return function(dispatch) {
+      dispatch(setLoadingState(true));
+
+      return fetch('http://localhost:8564/notifications.json')
+      .then((data) => data.json())
+      .then((data) => {
+          dispatch(setNotifications(data));
+      })
+      .catch((err) => console.log(err))
+      .finally(() => dispatch(setLoadingState(false)));
+  };
+}
