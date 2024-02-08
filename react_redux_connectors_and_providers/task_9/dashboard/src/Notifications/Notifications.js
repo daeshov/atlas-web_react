@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
 import closeIcon from '../assets/close-icon.png';
 import NotificationItem from './NotificationItem';
+import { List } from 'immutable';
 
 export default function Notifications(props) {
   const buttonStyle = {
@@ -15,7 +16,8 @@ export default function Notifications(props) {
   const menuItemStyle = css(props.displayDrawer ? styles.hidden : styles.menuItem);
   let content;
   let { listNotifications } = props;
-  let noNewNotifications = listNotifications.length === 0 || Object.keys(listNotifications).length === 0 || listNotifications.count() === 0
+  listNotifications = List(listNotifications); 
+  let noNewNotifications = listNotifications.size === 0;
   if (noNewNotifications) content = <p>No new notification for now</p>;
   else {
     content = listNotifications.valueSeq().map((notif) =>
@@ -49,10 +51,7 @@ export default function Notifications(props) {
 
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
-  listNotifications: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.array
-  ]),
+  listNotifications: PropTypes.instanceOf(List),
   handleDisplayDrawer: PropTypes.func,
   handleHideDrawer: PropTypes.func,
   fetchNotifications: PropTypes.func,
@@ -62,7 +61,7 @@ Notifications.propTypes = {
 
 Notifications.defaultProps = {
   displayDrawer: false,
-  listNotifications: {},
+  listNotifications: List(),
   handleDisplayDrawer: () => {},
   handleHideDrawer: () => {},
   markNotificationAsRead: () => {},

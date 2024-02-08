@@ -7,14 +7,14 @@ import { logout } from '../actions/uiActionCreators';
 class Header extends React.Component {
   render() {
     const { user, logout } = this.props;
-    const isLoggedIn = user.isLoggedIn;
+    const isLoggedIn = user && user.isLoggedIn;
 
     return (
       <header className={css(styles.header)} data-testid="Header">
         <img src={logo} className={css(styles.logo)} alt="logo" />
         <h1 className={css(styles.h1)}>School dashboard</h1>
-
-        {isLoggedIn && (
+    
+        {isLoggedIn && user && (
           <p className={css(styles.logoutSection)} data-testid="logoutSection">
             Welcome {user.email} (<span onClick={logout}>logout</span>)
           </p>

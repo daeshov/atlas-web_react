@@ -114,7 +114,7 @@ class App extends React.Component {
             data-testid="Notifications"/>
           <div className="App" data-testid="app-body">
             <Header />
-            {!user.isLoggedIn ? (
+            {this.props.isLoggedIn ?  (
               <BodySectionWithMarginBottom title="Course list" >
                 <CourseList listCourses={listCourses} data-testid="logout-link"/>
               </BodySectionWithMarginBottom>
@@ -135,7 +135,6 @@ class App extends React.Component {
   }
 
 App.defaultProps = {};
-
 App.propTypes = {
   user: PropTypes.shape({
     email: PropTypes.string,
@@ -147,7 +146,6 @@ App.propTypes = {
   hideNotificationDrawer: PropTypes.func.isRequired,
 };
   
-
 const styles = StyleSheet.create({
   body: {
     backgroundColor: '#f0f0f0',
@@ -163,7 +161,7 @@ const styles = StyleSheet.create({
 
 export const mapStateToProps = (state) => {
   return {
-    isLoggedIn: state.ui.isUserLoggedIn,
+    user: state.ui.user,
     displayDrawer: state.ui.isNotificationDrawerVisible,
   };
 }

@@ -7,10 +7,13 @@ function Footer(props) {
     const { user } = props;
     const copyright = `Copyright ${getFullYear()} - ${getFooterCopy(true)}`;
 
+    // Check if user is defined before accessing its properties
+    const welcomeMessage = user && user.isLoggedIn ? `Welcome, ${user.email}` : '';
+
     return (
         <div className="section-footer" data-testid="Footer">
             <p>{copyright}</p>
-            {user.isLoggedIn && <p>Welcome, {user.email}</p>}
+            {welcomeMessage && <p>{welcomeMessage}</p>}
         </div>
     );
 }
